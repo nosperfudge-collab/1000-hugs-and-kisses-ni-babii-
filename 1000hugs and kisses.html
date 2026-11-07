@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A 1000x Hugs & Kisses 💗</title>
+
+<style>
+    body {
+        background: #ffe6ef;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 30px 15px;
+        color: #d6336c;
+    }
+
+    h1 {
+        margin-top: 50px;
+    }
+
+    button {
+        background: #ff4d88;
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #display {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 30px;
+        font-size: 25px;
+    }
+
+    .love {
+        animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    #final {
+        margin-top: 30px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<h1> hi babiiii! 💗</h1>
+
+<p>eto na po hugs and kisses moooooo🥺</p>
+
+<button id="start" onclick="startLove()">
+    Open my hugs & kisses 💋
+</button>
+
+<h3 id="counter"></h3>
+
+<div id="display"></div>
+
+<div id="final"></div>
+
+<script>
+    let count = 0;
+    const total = 1000;
+
+    function startLove() {
+
+        document.getElementById("start").disabled = true;
+        document.getElementById("start").style.display = "none";
+
+        const display = document.getElementById("display");
+        const counter = document.getElementById("counter");
+        const final = document.getElementById("final");
+
+        const interval = setInterval(() => {
+
+            if (count >= total) {
+                clearInterval(interval);
+
+                final.innerHTML =
+                    "That's 1,000 hugs and kisses! 💗<br>" +
+                    "And I'd still give you a thousand more. 🥺";
+
+                return;
+            }
+
+            count++;
+
+            const item = document.createElement("span");
+            item.className = "love";
+
+            item.innerHTML = count % 2 === 0 ? "💋" : "🤗";
+
+            display.appendChild(item);
+
+            counter.innerHTML =
+                count + " / " + total + " hugs & kisses 💗";
+
+        }, 30);
+    }
+</script>
+
+</body>
+</html>
